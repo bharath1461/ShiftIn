@@ -1,0 +1,24 @@
+# ===== ShiftIn — Git Ignore =====
+
+# Secret environment file (contains API keys)
+env.js
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Node (if used for dev server)
+node_modules/
+package-lock.json
+
+# Logs
+*.log
+
+# Design reference files (not part of app)
+stitch_shiftin_student_job_platform/
+ShiftIn_PRD.txt

@@ -1,0 +1,28 @@
+{
+  "name": "ShiftIn",
+  "short_name": "ShiftIn",
+  "description": "The Part-Time Career Hub for Students — Find verified part-time jobs and connect with employers.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#faf8ff",
+  "theme_color": "#0052cc",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "education"],
+  "lang": "en",
+  "dir": "ltr"
+}

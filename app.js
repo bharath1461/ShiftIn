@@ -5,6 +5,7 @@ import { getProfile } from './lib/supabase.js';
 import { renderSplash, renderRoleSelection, renderEmployeeLogin, renderEmployerLogin, renderEmployeeOnboarding, renderEmployerOnboarding, renderVerification } from './screens-auth.js';
 import { renderEmployeeDashboard, renderEmployerDashboard } from './screens-dashboard.js';
 import { renderJobDetails, renderApplicationFlow, renderPostJob, renderApplicantManagement, renderProfile } from './screens-features.js';
+import { renderBrowseJobs, renderMyApplications, renderEmployerJobs } from './screens-nav.js';
 
 // Initialize Firebase Auth and load profile if returning user
 async function bootstrap() {
@@ -55,6 +56,9 @@ Router.register('#/job/:id', renderJobDetails);
 Router.register('#/apply/:id', renderApplicationFlow);
 Router.register('#/post-job', renderPostJob);
 Router.register('#/applicants/:id', renderApplicantManagement);
+Router.register('#/jobs', renderBrowseJobs);
+Router.register('#/my-applications', renderMyApplications);
+Router.register('#/employer-jobs', renderEmployerJobs);
 Router.register('#/profile', renderProfile);
 
 // Boot then start router

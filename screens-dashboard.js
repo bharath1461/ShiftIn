@@ -3,8 +3,8 @@ import { showToast, showLoader, timeAgo, formatPay } from './lib/ui.js';
 import AppState from './lib/state.js';
 
 export function bottomNav(active, role) {
-  const empItems=[{id:'home',icon:'home',label:'Home',hash:'#/dashboard/employee'},{id:'jobs',icon:'work',label:'Jobs',hash:'#/dashboard/employee'},{id:'apps',icon:'assignment_turned_in',label:'Applications',hash:'#/dashboard/employee'},{id:'profile',icon:'person',label:'Profile',hash:'#/profile'}];
-  const emplItems=[{id:'home',icon:'home',label:'Home',hash:'#/dashboard/employer'},{id:'applicants',icon:'assignment_turned_in',label:'Applicants',hash:'#/applicants/all'},{id:'jobs',icon:'work',label:'My Jobs',hash:'#/dashboard/employer'},{id:'profile',icon:'person',label:'Profile',hash:'#/profile'}];
+  const empItems=[{id:'home',icon:'home',label:'Home',hash:'#/dashboard/employee'},{id:'jobs',icon:'work',label:'Jobs',hash:'#/jobs'},{id:'apps',icon:'assignment_turned_in',label:'Applications',hash:'#/my-applications'},{id:'profile',icon:'person',label:'Profile',hash:'#/profile'}];
+  const emplItems=[{id:'home',icon:'home',label:'Home',hash:'#/dashboard/employer'},{id:'applicants',icon:'assignment_turned_in',label:'Applicants',hash:'#/applicants/all'},{id:'jobs',icon:'work',label:'My Jobs',hash:'#/employer-jobs'},{id:'profile',icon:'person',label:'Profile',hash:'#/profile'}];
   const items = role === 'employer' ? emplItems : empItems;
   return `<nav class="bottom-nav">${items.map(i => `<a href="${i.hash}" class="nav-item ${i.id===active?'active':''}"><span class="material-symbols-outlined">${i.icon}</span><span>${i.label}</span></a>`).join('')}</nav>`;
 }

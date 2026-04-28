@@ -19,10 +19,13 @@ export function renderRoleSelection(el) {
 
 async function handleGoogleAuth(role) {
   try {
+    localStorage.setItem('shiftin_role', role);
     const user = await signInWithGoogle();
+    if (!user) return; // redirect flow, page will reload
     const existing = await getProfile(user.uid);
     if (existing) {
       AppState.set({ profile: existing, role: existing.role });
+      localStorage.setItem('shiftin_role', existing.role);
       location.hash = existing.role === 'employer' ? '#/dashboard/employer' : '#/dashboard/employee';
     } else {
       AppState.set({ role });
@@ -120,7 +123,11 @@ export function renderVerification(el) {
   document.getElementById('doc-front').onchange = (e) => { frontFile=e.target.files[0]; if(frontFile){document.getElementById('front-zone').innerHTML=`<span class="material-symbols-outlined text-secondary">check_circle</span><span class="text-label-sm text-secondary">${frontFile.name}</span>`;updateBtn();} };
   document.getElementById('doc-back').onchange = (e) => { backFile=e.target.files[0]; if(backFile) document.getElementById('back-zone').innerHTML=`<span class="material-symbols-outlined text-secondary">check_circle</span><span class="text-label-sm text-secondary">${backFile.name}</span>`; };
   document.getElementById('selfie-input').onchange = (e) => { selfieFile=e.target.files[0]; if(selfieFile) document.getElementById('selfie-zone').innerHTML=`<span class="material-symbols-outlined text-secondary">check_circle</span><span class="text-label-sm text-secondary">${selfieFile.name}</span>`; };
-  document.getElementById('btn-skip').onclick = () => { location.hash = AppState.get('role') === 'employer' ? '#/dashboard/employer' : '#/dashboard/employee'; };
+  document.getElementById('btn-skip').onclick = () => {
+    const profile = AppState.get('profile');
+    const role = (profile && profile.role) || AppState.get('role') || localStorage.getItem('shiftin_role') || 'student';
+    location.hash = role === 'employer' ? '#/dashboard/employer' : '#/dashboard/employee';
+  };
   document.getElementById('btn-verify').onclick = async () => {
     if (!frontFile) return;
     const btn = document.getElementById('btn-verify');
